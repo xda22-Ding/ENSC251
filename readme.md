@@ -4,3 +4,5 @@ The task distribution is listed below:
       c. 5(4pts)
       d. 6(4pts)
       
+Main(3pts) is divided into 3 parts and shall be done by 3 people.
+14(1pt) is left to be chosen.
