@@ -8,11 +8,11 @@ Student::Student(string fn, string ln, float cgpa, int score, int APPID){
     setLastName(ln);
     setCGPA(cgpa);
     setResearchScore(score);
-    setAppID(APPID)
+    setAppID(APPID);
 
 }
 
-bool Student::isValid(){
+bool Student::isValid() const{
 	if(CGPA < 0 || CGPA > 4.3){
 		cout << "the CGPA is invalid. " << endl;
 		return false;
@@ -23,6 +23,10 @@ bool Student::isValid(){
 	}
 	if( app_id < 20220000 || app_id > 20230000 ){
 		cout << "the application id is invalid. " << endl;
+		return false;
+	}
+	else{
+		return true;
 	}
 }
 

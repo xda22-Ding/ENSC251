@@ -1,31 +1,30 @@
 //header file student.hpp to declare your classes
-using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
 class Student 
 {
 public:
-	Student(int month, int day);
-    bool isvalid() const;
+	Student(std::string fn, std::string ln, float cgpa, int score, int APPID);
+    bool isValid() const;
 
-    string getFirstName() const;
-    string getLastName() const;
+    std::string getFirstName() const;
+    std::string getLastName() const;
     float getCGPA() const;
     int getResearchScore() const;
     int getAppID() const;
 
 
 
-    void setFirstName(string fn);
-    void setLastName(string ln);
+    void setFirstName(std::string fn);
+    void setLastName(std::string ln);
     void setCGPA(float cgpa);
     void setResearchScore(int score);
-    void setAppID(int APPID)
+    void setAppID(int APPID);
 
 
 
 private:
-	string first_name;
-	string last_name;
+	std::string first_name;
+	std::string last_name;
 	float CGPA; 
 	int research_score;
 	int app_id;
@@ -58,4 +57,4 @@ private:
 
 
 
-}
+};
