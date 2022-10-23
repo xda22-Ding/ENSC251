@@ -4,6 +4,7 @@ class Student
 {
 public:
 	Student(std::string fn, std::string ln, float cgpa, int score, int APPID);
+	Student();
     bool isValid() const;
 
     std::string getFirstName() const;
@@ -34,6 +35,8 @@ private:
 class ToeflScore
 {
 public:
+	ToeflScore(int reading_para, int listening_para, int speaking_para, int writing_para);
+	ToeflScore();
 	int getReading() const;
 	int getListening() const;
 	int getSpeaking() const;
@@ -56,5 +59,38 @@ private:
 	int total_score;
 
 
+};
+
+
+class InternationalStudent : public Student
+{
+public:
+	InternationalStudent(std::string fn, std::string ln, float cgpa, int score, int APPID, ToeflScore toefl_score, std::string country);
+	InternationalStudent();
+	ToeflScore getToeflScore() const;
+	std::string getCountry() const;
+	void setToeflScore(ToeflScore toefl_score);
+	void setCountry(std::string country);
+
+private:
+	std::string country;
+	ToeflScore toefl_score;
 
 };
+
+class DomesticStudent : public Student
+{
+public:
+	DomesticStudent(std::string fn, std::string ln, float cgpa, int score, int APPID, std::string province);
+	DomesticStudent();
+	std::string getProvince() const;
+	void setProvince(std::string province);
+
+
+private:
+	std::string province;
+
+};
+
+
+

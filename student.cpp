@@ -12,6 +12,8 @@ Student::Student(string fn, string ln, float cgpa, int score, int APPID){
 
 }
 
+Student::Student(){};
+
 bool Student::isValid() const{
 	if(CGPA < 0 || CGPA > 4.3){
 		cout << "the CGPA is invalid. " << endl;
@@ -72,5 +74,101 @@ void Student::setAppID(int APPID){
 }
 
 
+
+ToeflScore::ToeflScore(int reading_para, int listening_para, int speaking_para, int writing_para){
+	setReading(reading_para);
+	setListening(listening_para);
+	setSpeaking(speaking_para);
+	setWriting(writing_para);
+	total_score = reading + listening + speaking + writing;
+
+}
+
+ToeflScore::ToeflScore(){}
+
+int ToeflScore::getReading() const{
+	return reading;
+}
+
+int ToeflScore::getListening() const{
+	return listening;
+}
+
+int ToeflScore::getSpeaking() const{
+	return speaking;
+}
+
+int ToeflScore::getWriting() const{
+	return writing;
+}
+
+int ToeflScore::getTotalScore() const{
+	return total_score;
+}
+
+void ToeflScore::setReading(int read){
+	reading = read;
+}
+
+void ToeflScore::setListening(int listen){
+	listening = listen;
+}
+
+void ToeflScore::setSpeaking(int speak){
+	speaking = speak;
+}
+
+void ToeflScore::setWriting(int write){
+	writing = write;
+}
+
+
+InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int score, int APPID, ToeflScore toeflscore_para, string country_para){
+    setFirstName(fn);
+    setLastName(ln);
+    setCGPA(cgpa);
+    setResearchScore(score);
+    setAppID(APPID);
+    setToeflScore(toeflscore_para);
+    setCountry(country_para);
+
+}
+
+InternationalStudent::InternationalStudent(){}
+
+ToeflScore InternationalStudent::getToeflScore() const{
+	return toefl_score;
+}
+
+string InternationalStudent::getCountry() const{
+	return country;
+}
+
+void InternationalStudent::setToeflScore(ToeflScore toeflscore_para){
+	toefl_score = toeflscore_para;
+}
+
+void InternationalStudent::setCountry(string country_para){
+	country = country_para;
+}
+
+DomesticStudent::DomesticStudent(string fn, string ln, float cgpa, int score, int APPID, string province_para){
+    setFirstName(fn);
+    setLastName(ln);
+    setCGPA(cgpa);
+    setResearchScore(score);
+    setAppID(APPID);
+    setProvince(province_para);
+}
+
+DomesticStudent::DomesticStudent(){}
+
+string DomesticStudent::getProvince() const{
+	return province;
+}
+
+void DomesticStudent::DomesticStudent::setProvince(string province_para){
+	province = province_para;
+}
 
 
