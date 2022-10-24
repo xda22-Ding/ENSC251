@@ -5,44 +5,45 @@
 #include <iostream>
 using namespace std;
 
-class DomesticStudent Order = DStudent; /**/
- void SortingDomesticStudent()
+/* Part 6*/
+void SortingDomesticStudent(const DomesticStudent &DStudent)
 {
+    class DomesticStudent Order = DStudent;
     int size = sizeof(Order)/size(Order[0]);
     class DomesticStudent Temp;
     int index;
+    int result;
+    int result2;
+    int result3;
     for(int i = 1; i < size - 1;i++ )
     {    
          index = i - 1;
          Temp =Order[i-1];
-         for (int j=i+1;j < sie j++)
+         for (int j=i+1;j < size j++)
          {
             result = compareResarchScore(Temp, Order[j]);
-            if(Temp > Order[j])
+            if(result == 1)
             {
                Temp = Order[j];
                index =j;
             } 
-            if (Temp = Order[j])
+            else if (result == 3)
             {
                   results2 = compareCGPA(Temp,Order[j]);
-                  if(Temp > Order[j])
+                  if(result2 == 1)
                     {
                         Temp = Order[j];
                         index = j;
                     }
-                  if(Temp = Order[j])
+                  else if(result2 == 3)
                   {
                         results3 = compareProvence(Temp,Order[j]);
-                        if(Temp > Order[j] )
+                        if(result3 == 1 )
                         {
                             Temp = Order[j];
                             index = j;
                         }
-
-                  }
-
-             
+                  }             
             }
               if(index != i - 1)
               {
@@ -50,11 +51,119 @@ class DomesticStudent Order = DStudent; /**/
                 Order[i-1] =Temp;
               }
           }
-
     }
-    
+     cout << Order << endl;    
 }
 
+void SortingInternationalStudent(const InternationalStudent &IStudent)
+{
+    class InternationalStudent InternationalOrder = IStudent;
+    int size = sizeof(InternationalOrder)/size(InternationalOrder[0]);
+    class InternationalStudent Temp;
+    int index;
+    int SortNumber = size;
+    int GradeReading;
+    int GradeListening;
+    int GradeWriting;
+    int GradeSpeaking;
+    int GradeTotal;
+    int result;
+    int result2;
+    int result3;
+    for(int k = 0; k < size; k++)
+    {
+        GradeListening = InternationalOrder[k].getToeflScore().getListening();
+        GradeSpeaking = InternationalOrder[k].getToeflScore().getSpeaking();
+        GradeReading = InternationalOrder[k].getToeflScore().getReading();
+        GradeWriting = InternationalOrder[k].getToeflScore().getWriting();
+        GradeTotal = GradeListening + GradeSpeaking + GradeReading + GradeWriting;
+        if(GradeTotal < 93 )
+        {
+           Temp = InternationalOrder[k];
+           InternationalOrder[k] = InternationalOrder[SortNumber - 1];
+           InternationalOrder[SortNumber - 1] = Temp;
+           SortNumber = SortNumber - 1;
+           break;
+        }
+        else if(GradeListening < 20)
+        {
+           Temp = InternationalOrder[k];
+           InternationalOrder[k] = InternationalOrder[SortNumber - 1];
+           InternationalOrder[SortNumber - 1] = Temp;
+           SortNumber = SortNumber - 1;
+           break; 
+        }
+        else if(GradeSpeaking < 20)
+        {
+           Temp = InternationalOrder[k];
+           InternationalOrder[k] = InternationalOrder[SortNumber - 1];
+           InternationalOrder[SortNumber - 1] = Temp;
+           SortNumber = SortNumber - 1;
+           break; 
+        }
+        else if(GradeReading < 20)
+        {
+           Temp = InternationalOrder[k];
+           InternationalOrder[k] = InternationalOrder[SortNumber - 1];
+           InternationalOrder[SortNumber - 1] = Temp;
+           SortNumber = SortNumber - 1;
+           break; 
+        }
+        else if(GradeWriting < 20)
+        {
+           Temp = InternationalOrder[k];
+           InternationalOrder[k] = InternationalOrder[SortNumber - 1];
+           InternationalOrder[SortNumber - 1] = Temp;
+           SortNumber = SortNumber - 1;
+           break; 
+        }
+    }
+    for(int i = 1; i < SortNumber - 1;i++ )
+    {    
+         index = i - 1;
+         Temp =InternationalOrder[i-1];
+         for (int j=i+1;j < SortNumber j++)
+         {
+            result = compareResarchScore(Temp, InternationalOrder[j]);
+            if(result == 1)
+            {
+               Temp = InternationalOrder[j];
+               index =j;
+            } 
+            else if (result == 3)
+            {
+                  results2 = compareCGPA(Temp,InternationalOrder[j]);
+                  if(result2 == 1)
+                    {
+                        Temp = InternationalOrder[j];
+                        index = j;
+                    }
+                  else if(result2 == 3)
+                  {
+                        results3 = compareCountry(Temp,InternationalOrder[j]);
+                        if(result3 == 1 )
+                        {
+                            Temp = InternationalOrder[j];
+                            index = j;
+                        }
+                  }             
+            }
+              if(index != i - 1)
+              {
+                InternationalOrder[index] = Order[i-1];
+                InternationalOrder[i-1] =Temp;
+              }
+          }
+
+    }
+    class InternationalStudent PrintArray[SortNumber];
+    for(int M = 0; M < SortNumber; M++)
+    {
+        PrintArray[M] = InternationalOrder[M];
+    }
+    cout << PrintArray << endl;
+    
+}
 
 
 //--------field sort
