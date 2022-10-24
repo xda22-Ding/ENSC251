@@ -3,6 +3,7 @@
 #include<iostream>
 using namespace std;
 
+//The constructor of student class
 Student::Student(string fn, string ln, float cgpa, int score, int APPID){
     setFirstName(fn);
     setLastName(ln);
@@ -12,8 +13,10 @@ Student::Student(string fn, string ln, float cgpa, int score, int APPID){
 
 }
 
+//The default constructor of student class
 Student::Student(){};
 
+//Check if the fields of Student object meet certain requirements.
 bool Student::isValid() const{
 	if(CGPA < 0 || CGPA > 4.3){
 		cout << "the CGPA is invalid. " << endl;
@@ -32,6 +35,7 @@ bool Student::isValid() const{
 	}
 }
 
+//getter and setter of member variables
 string Student::getFirstName() const{
 	return first_name;
 }
@@ -74,7 +78,7 @@ void Student::setAppID(int APPID){
 }
 
 
-
+//The constructor of ToeflScore Class
 ToeflScore::ToeflScore(int reading_para, int listening_para, int speaking_para, int writing_para){
 	setReading(reading_para);
 	setListening(listening_para);
@@ -84,8 +88,11 @@ ToeflScore::ToeflScore(int reading_para, int listening_para, int speaking_para, 
 
 }
 
+//The default constructor of ToeflScore
 ToeflScore::ToeflScore(){}
 
+
+//The Getter and Setter of ToeflScore
 int ToeflScore::getReading() const{
 	return reading;
 }
@@ -146,6 +153,7 @@ int compareResearchScore (const Student& stu1, const Student& stu2) {
 
 }
 
+//The constructor of Inheritted class InternationalStudent Class
 InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int score, int APPID, ToeflScore toeflscore_para, string country_para){
     setFirstName(fn);
     setLastName(ln);
@@ -157,6 +165,7 @@ InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int
 
 }
 
+//The default constructor of InternationalStudent Class
 InternationalStudent::InternationalStudent(){}
 
 ToeflScore InternationalStudent::getToeflScore() const{
@@ -175,6 +184,7 @@ void InternationalStudent::setCountry(string country_para){
 	country = country_para;
 }
 
+//The constructor of Inheritted class DomesticlStudent Class
 DomesticStudent::DomesticStudent(string fn, string ln, float cgpa, int score, int APPID, string province_para){
     setFirstName(fn);
     setLastName(ln);

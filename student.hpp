@@ -1,4 +1,6 @@
 //header file student.hpp to declare your classes
+#ifndef STUDENT
+#define STUDENT
 #include <string> //you will have to use string in C++
 class Student 
 {
@@ -93,6 +95,7 @@ private:
 	std::string province;
 
 };
+#endif//STUDENT
 
 
 
