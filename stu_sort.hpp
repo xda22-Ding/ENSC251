@@ -8,20 +8,30 @@
 #include <iostream>
 using namespace std;
 
-template<class T, class D>
-void merge_upwards (T *A, const int& startIndex, const int& middleIndex, const int& lastIndex, D *B);
-
-template<class T, class D>
-void mergeSort_upwards (T *A, const int& startIndex, const int& lastIndex, D *B);
-
-template<class T, class D>
-void merge_downwards (T *A, const int& startIndex, const int& middleIndex, const int& lastIndex, D *B);
-
-template<class T, class D>
-void mergeSort_downwards (T *A, const int& startIndex, const int& lastIndex, D *B);
-
-template<class T>
-T * field_sort (const T * s, const int size, const char choice);
+/*                    CGPA sort for international student              */
+void merge_CGPA_In(InternationalStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex);
+void mergeSort_CGPA_In (InternationalStudent *A, const int& startIndex, const int& lastIndex);
+/*                Research Score sort for international student              */
+void merge_RScore_In(InternationalStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex);
+void mergeSort_RScore_In (InternationalStudent *A, const int& startIndex, const int& lastIndex);
+/*                First name sort for international student              */
+void merge_FN_In(InternationalStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex);
+void mergeSort_FN_In (InternationalStudent *A, const int& startIndex, const int& lastIndex);
+/*                Last name sort for international student              */
+void merge_LN_In(InternationalStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex);
+void mergeSort_LN_In (InternationalStudent *A, const int& startIndex, const int& lastIndex);
+/*                    CGPA sort for Domestic Student                    */
+void merge_CGPA_Do(DomesticStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex);
+void mergeSort_CGPA_Do (DomesticStudent *A, const int& startIndex, const int& lastIndex);
+/*                 Research Score sort for Domestic Student              */
+void merge_RScore_Do(DomesticStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex);
+void mergeSort_RScore_Do (DomesticStudent *A, const int& startIndex, const int& lastIndex);
+/*                  First name sort for Domestic student                */
+void merge_FN_Do(DomesticStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex);
+void mergeSort_FN_Do (DomesticStudent *A, const int& startIndex, const int& lastIndex);
+/*                  Last name sort for Domestic student                */
+void merge_LN_Do(DomesticStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex);
+void mergeSort_LN_Do (DomesticStudent *A, const int& startIndex, const int& lastIndex);
 
 
 #endif /* stu_sort_hpp */
