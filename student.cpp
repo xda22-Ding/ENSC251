@@ -155,9 +155,9 @@ int compareResearchScore (const Student& stu1, const Student& stu2) {
 }
 // comparing name by alphabet
 int compareFirstName (const Student& stu1, const Student& stu2) {
-	if (stu1.first_name < stu2.first_name)
-		return 1;
 	if (stu1.first_name > stu2.first_name)
+		return 1;
+	if (stu1.first_name < stu2.first_name)
 		return 2;
 	if (stu1.first_name == stu2.first_name)
 		return 3;
@@ -166,15 +166,38 @@ int compareFirstName (const Student& stu1, const Student& stu2) {
 
 }
 int compareLastName (const Student& stu1, const Student& stu2) {
-	if (stu1.last_name < stu2.last_name)
-		return 1;
 	if (stu1.last_name > stu2.last_name)
+		return 1;
+	if (stu1.last_name < stu2.last_name)
 		return 2;
 	if (stu1.last_name == stu2.last_name)
 		return 3;
 	else
 		return 4;
 
+}
+
+int compareCountry (const InternationalStudent& stu1, const InternationalStudent& stu2){
+	if (stu1.country > stu2.country)
+		return 1;
+	if (stu1.country < stu2.country)
+		return 2;
+	if (stu1.country == stu2.country)
+		return 3;
+	else
+		return 4;
+
+}
+
+int compareProvince (const DomesticStudent& stu1, const DomesticStudent& stu2) {
+	if (stu1.province > stu2.province)
+		return 1;
+	if (stu1.province < stu2.province)
+		return 2;
+	if (stu1.province == stu2.province)
+		return 3;
+	else
+		return 4;
 }
 
 
