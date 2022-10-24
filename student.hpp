@@ -2,6 +2,7 @@
 #ifndef STUDENT
 #define STUDENT
 #include <string> //you will have to use string in C++
+#include<iostream>
 class Student 
 {
 public:
@@ -79,7 +80,10 @@ public:
 	void setToeflScore(ToeflScore toefl_score);
 	void setCountry(std::string country);
         
+	//compare
 	friend int compareCountry (const InternationalStudent& stu1, const InternationalStudent& stu2);
+	//overload operator
+	friend std::ostream& operator <<(std::ostream& outs, const InternationalStudent& interStu);
 private:
 	std::string country;
 	ToeflScore toefl_score;
@@ -93,8 +97,11 @@ public:
 	DomesticStudent();
 	std::string getProvince() const;
 	void setProvince(std::string province);
-
+       
+       //compare
        friend int compareProvince (const DomesticStudent& stu1, const DomesticStudent& stu2);
+       //overload operator
+       friend std::ostream& operator <<(std::ostream& outs, const DomesticStudent& domesStu);
 private:
 	std::string province;
 
