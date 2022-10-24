@@ -78,7 +78,8 @@ public:
 	std::string getCountry() const;
 	void setToeflScore(ToeflScore toefl_score);
 	void setCountry(std::string country);
-
+        
+	friend int compareCountry (const InternationalStudent& stu1, const InternationalStudent& stu2);
 private:
 	std::string country;
 	ToeflScore toefl_score;
@@ -93,7 +94,7 @@ public:
 	std::string getProvince() const;
 	void setProvince(std::string province);
 
-
+       friend int compareProvince (const DomesticStudent& stu1, const DomesticStudent& stu2);
 private:
 	std::string province;
 
