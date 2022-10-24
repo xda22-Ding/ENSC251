@@ -1,5 +1,9 @@
 //stu_sort.cpp to implement your sorting functions
 #include "stu_sort.hpp"
+#include "student.hpp"
+#include <string>
+#include <iostream>
+using namespace std;
 
 class DomesticStudent Order = DStudent; /**/
  void SortingDomesticStudent()
@@ -55,16 +59,15 @@ class DomesticStudent Order = DStudent; /**/
 
 //--------field sort
 
-#include "stu_sort.hpp"
-#include "student.hpp"
-#include <string>
-#include <iostream>
-using namespace std;
-/*-----------------------Implemt merge sort for CGPA-------------------------*/
-void merge_CGPA_In(InternationalStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex)
+
+
+//merge function
+template<class T, class D>
+void merge_upwards (T *A, const int& startIndex, const int& middleIndex, const int& lastIndex, D *B)
 {
     int size = lastIndex - startIndex + 1;
-    InternationalStudent * temp = new InternationalStudent [size];
+    T * temp1 = new T [size];
+    D * temp2 = new D [size];
     
     int i = startIndex;
     int j = middleIndex + 1;
@@ -72,369 +75,158 @@ void merge_CGPA_In(InternationalStudent * A, const int& startIndex, const int& m
     
     while (i <= middleIndex && j <= lastIndex)
     {
-        if (A[i].getCGPA() > A[j].getCGPA())
-            temp[k++] = A[i++];
+        if (B[i] < B[j])
+        {
+            temp1[k++] = A[i++];
+            temp2[k++] = B[i++];
+        }
         else
-            temp[k++] = A[i++];
+        {
+            temp1[k++] = A[i++];
+            temp2[k++] = B[i++];
+        }
+            
     }
     while (i <= middleIndex)
-        temp[k++] = A[i++];
+    {
+        temp1[k++] = A[i++];
+        temp2[k++] = B[i++];
+    }
     while (j <= lastIndex)
-        temp[k++] = A[j++];
+    {
+        temp1[k++] = A[i++];
+        temp2[k++] = B[i++];
+    }
     for (int k = 0; k < size; k++)
-        A[startIndex+k] = temp [k];
-    delete [] temp;
+    {
+        A[startIndex+k] = temp1[k];
+        B[startIndex+k] = temp2[k];
+    }
+    delete []temp1;
+    delete []temp2;
 }
-void mergeSort_CGPA_In (InternationalStudent *A, const int& startIndex, const int& lastIndex)
+
+template<class T, class D>
+void mergeSort_upwards (T *A, const int& startIndex, const int& lastIndex, D *B)
 {
     if (startIndex >= lastIndex)
         return;
     else
     {
         int middleIndex = (startIndex + lastIndex) / 2;
-        mergeSort_CGPA_In(A, startIndex, middleIndex);
-        mergeSort_CGPA_In(A, middleIndex + 1, lastIndex);
-        merge_CGPA_In(A,startIndex,middleIndex,lastIndex);
-    }
-}
-/*------------------Implemt merge sort for Resaerch Score--------------------*/
-void merge_RScore_In(InternationalStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex)
-{
-    int size = lastIndex - startIndex + 1;
-    InternationalStudent * temp = new InternationalStudent [size];
-    
-    int i = startIndex;
-    int j = middleIndex + 1;
-    int k = 0;
-    
-    while (i <= middleIndex && j <= lastIndex)
-    {
-        if (A[i].getResearchScore() > A[j].getResearchScore())
-            temp[k++] = A[i++];
-        else
-            temp[k++] = A[i++];
-    }
-    while (i <= middleIndex)
-        temp[k++] = A[i++];
-    while (j <= lastIndex)
-        temp[k++] = A[j++];
-    for (int k = 0; k < size; k++)
-        A[startIndex+k] = temp [k];
-    delete [] temp;
-}
-void mergeSort_RScore_In (InternationalStudent *A, const int& startIndex, const int& lastIndex)
-{
-    if (startIndex >= lastIndex)
-        return;
-    else
-    {
-        int middleIndex = (startIndex + lastIndex) / 2;
-        mergeSort_RScore_In(A, startIndex, middleIndex);
-        mergeSort_RScore_In(A, middleIndex + 1, lastIndex);
-        merge_RScore_In(A,startIndex,middleIndex,lastIndex);
-    }
-}
-/*--------------------Implemt merge sort for First name----------------------*/
-void merge_FN_In(InternationalStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex)
-{
-    int size = lastIndex - startIndex + 1;
-    InternationalStudent * temp = new InternationalStudent [size];
-    
-    int i = startIndex;
-    int j = middleIndex + 1;
-    int k = 0;
-    
-    while (i <= middleIndex && j <= lastIndex)
-    {
-        if (A[i].getFirstName() < A[j].getFirstName())
-            temp[k++] = A[i++];
-        else
-            temp[k++] = A[i++];
-    }
-    while (i <= middleIndex)
-        temp[k++] = A[i++];
-    while (j <= lastIndex)
-        temp[k++] = A[j++];
-    for (int k = 0; k < size; k++)
-        A[startIndex+k] = temp [k];
-    delete [] temp;
-}
-void mergeSort_FN_In (InternationalStudent *A, const int& startIndex, const int& lastIndex)
-{
-    if (startIndex >= lastIndex)
-        return;
-    else
-    {
-        int middleIndex = (startIndex + lastIndex) / 2;
-        mergeSort_FN_In(A, startIndex, middleIndex);
-        mergeSort_FN_In(A, middleIndex + 1, lastIndex);
-        merge_FN_In(A,startIndex,middleIndex,lastIndex);
-    }
-}
-/*--------------------Implemt merge sort for Last name----------------------*/
-void merge_LN_In(InternationalStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex)
-{
-    int size = lastIndex - startIndex + 1;
-    InternationalStudent * temp = new InternationalStudent [size];
-    
-    int i = startIndex;
-    int j = middleIndex + 1;
-    int k = 0;
-    
-    while (i <= middleIndex && j <= lastIndex)
-    {
-        if (A[i].getLastName() < A[j].getLastName())
-            temp[k++] = A[i++];
-        else
-            temp[k++] = A[i++];
-    }
-    while (i <= middleIndex)
-        temp[k++] = A[i++];
-    while (j <= lastIndex)
-        temp[k++] = A[j++];
-    for (int k = 0; k < size; k++)
-        A[startIndex+k] = temp [k];
-    delete [] temp;
-}
-void mergeSort_LN_In (InternationalStudent *A, const int& startIndex, const int& lastIndex)
-{
-    if (startIndex >= lastIndex)
-        return;
-    else
-    {
-        int middleIndex = (startIndex + lastIndex) / 2;
-        mergeSort_LN_In(A, startIndex, middleIndex);
-        mergeSort_LN_In(A, middleIndex + 1, lastIndex);
-        merge_LN_In(A,startIndex,middleIndex,lastIndex);
+        mergeSort_upwards(A, startIndex, middleIndex, B);
+        mergeSort_upwards(A, middleIndex + 1, lastIndex, B);
+        merge_upwards(A, startIndex, middleIndex, lastIndex, B);
     }
 }
 
-/*The function will take an InternationalStudent array, size, and char as input, 'A' for CGPA, 'B' for research score, 'C' for first name, 'D' for last name */
-InternationalStudent * field_sort (const InternationalStudent * s, const int size, const char choice)
+template<class T, class D>
+void merge_downwards (T *A, const int& startIndex, const int& middleIndex, const int& lastIndex, D *B)
 {
-    //Prepare for the parameter and array
+    int size = lastIndex - startIndex + 1;
+    T * temp1 = new T [size];
+    D * temp2 = new D [size];
+    
+    int i = startIndex;
+    int j = middleIndex + 1;
+    int k = 0;
+    
+    while (i <= middleIndex && j <= lastIndex)
+    {
+        if (B[i] > B[j])
+        {
+            temp1[k++] = A[i++];
+            temp2[k++] = B[i++];
+        }
+        else
+        {
+            temp1[k++] = A[i++];
+            temp2[k++] = B[i++];
+        }
+            
+    }
+    while (i <= middleIndex)
+    {
+        temp1[k++] = A[i++];
+        temp2[k++] = B[i++];
+    }
+    while (j <= lastIndex)
+    {
+        temp1[k++] = A[i++];
+        temp2[k++] = B[i++];
+    }
+    for (int k = 0; k < size; k++)
+    {
+        A[startIndex+k] = temp1[k];
+        B[startIndex+k] = temp2[k];
+    }
+    delete []temp1;
+    delete []temp2;
+}
+template<class T, class D>
+void mergeSort_downwards (T *A, const int& startIndex, const int& lastIndex, D *B)
+{
+    if (startIndex >= lastIndex)
+        return;
+    else
+    {
+        int middleIndex = (startIndex + lastIndex) / 2;
+        mergeSort_downwards(A, startIndex, middleIndex, B);
+        mergeSort_downwards(A, middleIndex + 1, lastIndex, B);
+        merge_downwards(A, startIndex, middleIndex, lastIndex, B);
+    }
+}
+
+template<class T>
+T * field_sort (const T * s, const int size, const char choice)
+{
     int startIndex = 0;
     int lastIndex = size - 1;
-    InternationalStudent *temp = new InternationalStudent [size];
+    T *temp1 = new T [size];
     for (int i = 0; i < size; i++)
-        temp[i] = s[i];
+        temp1[i] = s[i];
     
-    //Classify Situation //Sort CGPA
+    //CGPA sort
     if (choice == 'A')
     {
-        mergeSort_CGPA_In(temp, startIndex, lastIndex);
-        return temp;
+        float *temp2 = new float [size];
+        for (int i = 0; i < size; i++)
+            temp2[i] = s[i].getCGPA();
+        mergeSort_downwards(temp1, startIndex, lastIndex, temp2);
+        return temp1;
     }
-    else if (choice == 'B')//Sort Resaerch Score
+    //Research Score sort
+    else if (choice == 'B')
     {
-        mergeSort_RScore_In(temp, startIndex, lastIndex);
-        return temp;
+        int *temp2 = new int [size];
+        for (int i = 0; i < size; i++)
+            temp2[i] = s[i].getResearchScore();
+        mergeSort_downwards(temp1, startIndex, lastIndex, temp2);
+        return temp1;
     }
+    //First Name Sort
     else if (choice == 'C')
     {
-        mergeSort_FN_In(temp, startIndex, lastIndex);
-        return temp;
+        string *temp2 = new string [size];
+        for (int i = 0; i < size; i++)
+            temp2[i] = s[i].getFirstName();
+        mergeSort_upwards(temp1, startIndex, lastIndex, temp2);
+        return temp1;
     }
+    //Last name
     else if (choice == 'D')
     {
-        mergeSort_LN_In(temp, startIndex, lastIndex);
-        return temp;
+        string *temp2 = new string [size];
+        for (int i = 0; i < size; i++)
+            temp2[i] = s[i].getLastName();
+        mergeSort_upwards(temp1, startIndex, lastIndex, temp2);
+        return temp1;
     }
     else
     {
         cout << "Invalid Input." << endl;
         return 0;
     }
-}
-/*------------------field sort for international student is done.-----------*/
-
-
-
-/*-----------------------Implemt merge sort for CGPA-------------------------*/
-void merge_CGPA_Do(DomesticStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex)
-{
-    int size = lastIndex - startIndex + 1;
-    DomesticStudent * temp = new DomesticStudent [size];
     
-    int i = startIndex;
-    int j = middleIndex + 1;
-    int k = 0;
-    
-    while (i <= middleIndex && j <= lastIndex)
-    {
-        if (A[i].getCGPA() > A[j].getCGPA())
-            temp[k++] = A[i++];
-        else
-            temp[k++] = A[i++];
-    }
-    while (i <= middleIndex)
-        temp[k++] = A[i++];
-    while (j <= lastIndex)
-        temp[k++] = A[j++];
-    for (int k = 0; k < size; k++)
-        A[startIndex+k] = temp [k];
-    delete [] temp;
 }
-void mergeSort_CGPA_Do (DomesticStudent *A, const int& startIndex, const int& lastIndex)
-{
-    if (startIndex >= lastIndex)
-        return;
-    else
-    {
-        int middleIndex = (startIndex + lastIndex) / 2;
-        mergeSort_CGPA_Do(A, startIndex, middleIndex);
-        mergeSort_CGPA_Do(A, middleIndex + 1, lastIndex);
-        merge_CGPA_Do(A,startIndex,middleIndex,lastIndex);
-    }
-}
-/*------------------Implemt merge sort for Resaerch Score--------------------*/
-void merge_RScore_Do(DomesticStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex)
-{
-    int size = lastIndex - startIndex + 1;
-    DomesticStudent * temp = new DomesticStudent [size];
-    
-    int i = startIndex;
-    int j = middleIndex + 1;
-    int k = 0;
-    
-    while (i <= middleIndex && j <= lastIndex)
-    {
-        if (A[i].getResearchScore() > A[j].getResearchScore())
-            temp[k++] = A[i++];
-        else
-            temp[k++] = A[i++];
-    }
-    while (i <= middleIndex)
-        temp[k++] = A[i++];
-    while (j <= lastIndex)
-        temp[k++] = A[j++];
-    for (int k = 0; k < size; k++)
-        A[startIndex+k] = temp [k];
-    delete [] temp;
-}
-void mergeSort_RScore_Do (DomesticStudent *A, const int& startIndex, const int& lastIndex)
-{
-    if (startIndex >= lastIndex)
-        return;
-    else
-    {
-        int middleIndex = (startIndex + lastIndex) / 2;
-        mergeSort_RScore_Do(A, startIndex, middleIndex);
-        mergeSort_RScore_Do(A, middleIndex + 1, lastIndex);
-        merge_RScore_Do(A,startIndex,middleIndex,lastIndex);
-    }
-}
-/*--------------------Implemt merge sort for First name----------------------*/
-void merge_FN_Do(DomesticStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex)
-{
-    int size = lastIndex - startIndex + 1;
-    DomesticStudent * temp = new DomesticStudent [size];
-    
-    int i = startIndex;
-    int j = middleIndex + 1;
-    int k = 0;
-    
-    while (i <= middleIndex && j <= lastIndex)
-    {
-        if (A[i].getFirstName() < A[j].getFirstName())
-            temp[k++] = A[i++];
-        else
-            temp[k++] = A[i++];
-    }
-    while (i <= middleIndex)
-        temp[k++] = A[i++];
-    while (j <= lastIndex)
-        temp[k++] = A[j++];
-    for (int k = 0; k < size; k++)
-        A[startIndex+k] = temp [k];
-    delete [] temp;
-}
-void mergeSort_FN_Do (DomesticStudent *A, const int& startIndex, const int& lastIndex)
-{
-    if (startIndex >= lastIndex)
-        return;
-    else
-    {
-        int middleIndex = (startIndex + lastIndex) / 2;
-        mergeSort_FN_Do(A, startIndex, middleIndex);
-        mergeSort_FN_Do(A, middleIndex + 1, lastIndex);
-        merge_FN_Do(A,startIndex,middleIndex,lastIndex);
-    }
-}
-/*--------------------Implemt merge sort for Last name----------------------*/
-void merge_LN_Do(DomesticStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex)
-{
-    int size = lastIndex - startIndex + 1;
-    DomesticStudent * temp = new DomesticStudent [size];
-    
-    int i = startIndex;
-    int j = middleIndex + 1;
-    int k = 0;
-    
-    while (i <= middleIndex && j <= lastIndex)
-    {
-        if (A[i].getLastName() < A[j].getLastName())
-            temp[k++] = A[i++];
-        else
-            temp[k++] = A[i++];
-    }
-    while (i <= middleIndex)
-        temp[k++] = A[i++];
-    while (j <= lastIndex)
-        temp[k++] = A[j++];
-    for (int k = 0; k < size; k++)
-        A[startIndex+k] = temp [k];
-    delete [] temp;
-}
-void mergeSort_LN_Do (DomesticStudent *A, const int& startIndex, const int& lastIndex)
-{
-    if (startIndex >= lastIndex)
-        return;
-    else
-    {
-        int middleIndex = (startIndex + lastIndex) / 2;
-        mergeSort_LN_Do(A, startIndex, middleIndex);
-        mergeSort_LN_Do(A, middleIndex + 1, lastIndex);
-        merge_LN_Do(A,startIndex,middleIndex,lastIndex);
-    }
-}
-
-/*The function will take an InternationalStudent array, size, and char as input, 'A' for CGPA, 'B' for research score, 'C' for first name, 'D' for last name */
-DomesticStudent * field_sort (const DomesticStudent * s, const int size, const char choice)
-{
-    //Prepare for the parameter and array
-    int startIndex = 0;
-    int lastIndex = size - 1;
-    DomesticStudent *temp = new DomesticStudent [size];
-    for (int i = 0; i < size; i++)
-        temp[i] = s[i];
-    
-    //Classify Situation //Sort CGPA
-    if (choice == 'A')
-    {
-        mergeSort_CGPA_Do(temp, startIndex, lastIndex);
-        return temp;
-    }
-    else if (choice == 'B')//Sort Resaerch Score
-    {
-        mergeSort_RScore_Do(temp, startIndex, lastIndex);
-        return temp;
-    }
-    else if (choice == 'C')
-    {
-        mergeSort_FN_Do(temp, startIndex, lastIndex);
-        return temp;
-    }
-    else if (choice == 'D')
-    {
-        mergeSort_LN_Do(temp, startIndex, lastIndex);
-        return temp;
-    }
-    else
-    {
-        cout << "Invalid Input." << endl;
-        return 0;
-    }
-}
-/*------------------field sort for international student is done.-----------*/
 
