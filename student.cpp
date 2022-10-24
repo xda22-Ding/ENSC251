@@ -129,15 +129,16 @@ void ToeflScore::setWriting(int write){
 	writing = write;
 }
 
+// compare functions: 1.greater than 2.less than 3.equal to 4.invalid
 int compareCGPA (const Student& stu1, const Student& stu2){
 	if (stu1.CGPA > stu2.CGPA)
 		return 1; // student1 is greater than student2
 	if (stu1.CGPA < stu2.CGPA)
 		return 2; // student1 is less than student2
 	if (stu1.CGPA == stu2.CGPA)
-		return 0; // student 1 is equal to student2
+		return 3; // student 1 is equal to student2
         else
-		return 3; // invalid
+		return 4; // invalid
 
 }
 
@@ -147,11 +148,35 @@ int compareResearchScore (const Student& stu1, const Student& stu2) {
 	if (stu1.research_score < stu2.research_score)
 		return 2; // student1 is less than student2
 	if (stu1.research_score == stu2.research_score)
-		return 0; // student 1 is equal to student2
+		return 3; // student 1 is equal to student2
         else
-  		return 3; // invalid
+  		return 4; // invalid
 
 }
+// comparing name by alphabet
+int compareFirstName (const Student& stu1, const Student& stu2) {
+	if (stu1.first_name < stu2.first_name)
+		return 1;
+	if (stu1.first_name > stu2.first_name)
+		return 2;
+	if (stu1.first_name == stu2.first_name)
+		return 3;
+	else
+		return 4;
+
+}
+int compareLastName (const Student& stu1, const Student& stu2) {
+	if (stu1.last_name < stu2.last_name)
+		return 1;
+	if (stu1.last_name > stu2.last_name)
+		return 2;
+	if (stu1.last_name == stu2.last_name)
+		return 3;
+	else
+		return 4;
+
+}
+
 
 //The constructor of Inheritted class InternationalStudent Class
 InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int score, int APPID, ToeflScore toeflscore_para, string country_para){
