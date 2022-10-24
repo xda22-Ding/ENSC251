@@ -62,7 +62,7 @@ void Student::setLastName(string ln){
 }
 
 void Student::setCGPA(float cgpa){
-	cgpa = CGPA;
+	CGPA = cgpa;
 }
 
 void Student::setResearchScore(int score){
@@ -122,6 +122,29 @@ void ToeflScore::setWriting(int write){
 	writing = write;
 }
 
+int compareCGPA (const Student& stu1, const Student& stu2){
+	if (stu1.CGPA > stu2.CGPA)
+		return 1; // student1 is greater than student2
+	if (stu1.CGPA < stu2.CGPA)
+		return 2; // student1 is less than student2
+	if (stu1.CGPA == stu2.CGPA)
+		return 0; // student 1 is equal to student2
+        else
+		return 3; // invalid
+
+}
+
+int compareResearchScore (const Student& stu1, const Student& stu2) {
+	if (stu1.research_score > stu2.research_score)
+		return 1; // student1 is greater than student2
+	if (stu1.research_score < stu2.research_score)
+		return 2; // student1 is less than student2
+	if (stu1.research_score == stu2.research_score)
+		return 0; // student 1 is equal to student2
+        else
+  		return 3; // invalid
+
+}
 
 InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int score, int APPID, ToeflScore toeflscore_para, string country_para){
     setFirstName(fn);
