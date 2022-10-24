@@ -21,8 +21,8 @@ public:
     void setResearchScore(int score);
     void setAppID(int APPID);
 
-    int compareCGPA (const Student& stu1, const Student& stu2);
-    int	compareResearchScore (const Student& stu1, const Student& stu2);
+    friend int compareCGPA (const Student& stu1, const Student& stu2);
+    friend int	compareResearchScore (const Student& stu1, const Student& stu2);
 
 
 private:
