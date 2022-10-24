@@ -252,4 +252,17 @@ void DomesticStudent::DomesticStudent::setProvince(string province_para){
 	province = province_para;
 }
 
+//overload 
+std::ostream& operator <<(std::ostream& outs, const InternationalStudent& interStu){
+	
+        outs << "International Student : " <<interStu.getFirstName() << " "<< interStu.getLastName() <<"is from " << interStu.getCountry() << ". " <<"CGPA : " <<interStu.getCGPA() << " Research Score: " << interStu.getResearchScore() /*<<" Toefl Score: " <<interStu.getToeflScore() */<< endl;
 
+ 	return outs;
+
+}
+
+std::ostream& operator <<(std::ostream& outs, const DomesticStudent& domesStu){
+	
+	outs << "Domestic Student : " <<domesStu.getFirstName() << " "<< domesStu.getLastName() <<"is from " << domesStu.getProvince() << ". " <<"CGPA : " <<domesStu.getCGPA() << " Research Score: " << domesStu.getResearchScore() << endl;
+        return outs;
+}
