@@ -61,7 +61,7 @@ void Student::setLastName(string ln){
 	last_name = ln;
 }
 
-void Student::setCGPA(float cgpa){
+void Student::setCGPA(float CGPA){
 	cgpa = CGPA;
 }
 
