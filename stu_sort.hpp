@@ -9,6 +9,7 @@
 using namespace std;
 
 void SortingDomesticStudent( DomesticStudent DStudent[]);
+void SortingInternationalStudent( InternationalStudent IStudent[], ToeflScore toefArr[]);
 
 
 /*                    CGPA sort for international student              */
