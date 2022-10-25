@@ -8,6 +8,9 @@
 #include <iostream>
 using namespace std;
 
+void SortingDomesticStudent( DomesticStudent DStudent[]);
+
+
 /*                    CGPA sort for international student              */
 void merge_CGPA_In(InternationalStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex);
 void mergeSort_CGPA_In (InternationalStudent *A, const int& startIndex, const int& lastIndex);
