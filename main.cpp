@@ -171,25 +171,43 @@ while( getline(internationalFile, line) ) {
   for(int k = 1; k < 100; k++)
   {
      cout <<"  What do you want?" <<endl;
-     cout <<"  A for Sorting All Domestic Students By Signal Field" << endl;
-     cout <<"  B for Sorting All International Students By Signal Field " <<endl;
-     cout <<"  C for Sorting All Domestic Students By All Fields"<<endl;
-     cout <<"  D for Sorting All International Students By All Fields" <<endl;  
+     cout <<"  A for Printing All Domestic-stu Document" << endl;
+     cout <<"  B for Printing All International-stu Document" << endl;
+     cout <<"  C for Sorting All Domestic Students By Signal Field" << endl;
+     cout <<"  D for Sorting All International Students By Signal Field " <<endl;
+     cout <<"  E for Sorting All Domestic Students By All Fields"<<endl;
+     cout <<"  F for Sorting All International Students By All Fields" <<endl;
+     cout <<"  G for stop" << endl;  
      cin >> choose;
      
-     if(choose > 'D' || choose < 'A')
+     if(choose > 'G' || choose < 'A')
      {
        cout << "Please write number between A and G" << endl;
        exit(1);
      }
+     if(choose == 'G')
+       break;
    else
     {
        switch(choose)
       {
-       case 'C':
+       case 'A':
+                for (int i = 0; i < 100; i++)
+                {
+	                cout << domesArr[i]<<endl;
+                }
+                break;
+       case 'B':
+                for (int i = 0; i < 100; i++)
+                {
+	                cout << interArr[i]<<endl;
+                }
+                break;
+                             
+       case 'E':
                SortingDomesticStudent(domesArr);
                break;
-      case 'D':
+      case 'F':
               SortingInternationalStudent(interArr, toeflArr);
               break;
       }
