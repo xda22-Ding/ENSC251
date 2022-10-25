@@ -167,7 +167,8 @@ while( getline(internationalFile, line) ) {
   //close your file
   domesticFile.close();
   internationalFile.close();
-
+  
+  char choose;
   for(int k = 1; k < 100; k++)
   {
      cout <<"  What do you want?" <<endl;
