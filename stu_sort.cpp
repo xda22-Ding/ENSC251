@@ -6,22 +6,28 @@
 using namespace std;
 
 /* Part 6*/
-void SortingDomesticStudent(const DomesticStudent &DStudent)
+void SortingDomesticStudent( DomesticStudent DStudent[])
 {
-    class DomesticStudent Order = DStudent;
-    int size = sizeof(Order)/size(Order[0]);
+    class DomesticStudent Order[100];
+    for(int n=0; n< 100; n++)
+    {
+    Order[n] = DStudent[n];
+    }
+    
+    int size = sizeof(Order)/sizeof(Order[0]);
     class DomesticStudent Temp;
     int index;
     int result;
     int result2;
     int result3;
+  
     for(int i = 1; i < size - 1;i++ )
     {    
          index = i - 1;
          Temp =Order[i-1];
-         for (int j=i+1;j < size j++)
+         for (int j=i+1;j < size ;j++)
          {
-            result = compareResarchScore(Temp, Order[j]);
+            result = compareResearchScore(Temp, Order[j]);
             if(result == 1)
             {
                Temp = Order[j];
@@ -29,7 +35,7 @@ void SortingDomesticStudent(const DomesticStudent &DStudent)
             } 
             else if (result == 3)
             {
-                  results2 = compareCGPA(Temp,Order[j]);
+                  result2 = compareCGPA(Temp,Order[j]);
                   if(result2 == 1)
                     {
                         Temp = Order[j];
@@ -37,29 +43,49 @@ void SortingDomesticStudent(const DomesticStudent &DStudent)
                     }
                   else if(result2 == 3)
                   {
-                        results3 = compareProvence(Temp,Order[j]);
+                        result3 = compareProvince(Temp,Order[j]);
                         if(result3 == 1 )
                         {
                             Temp = Order[j];
                             index = j;
                         }
-                  }             
-            }
-              if(index != i - 1)
-              {
-                Order[index] = Order[i-1];
-                Order[i-1] =Temp;
-              }
-          }
-    }
-     cout << Order << endl;    
-}
 
-void SortingInternationalStudent(const InternationalStudent &IStudent)
+                  }
+
+             
+            }
+              
+          }
+          if(index != i - 1)
+          {
+              Order[index] = Order[i-1];
+              Order[i-1] =Temp;
+           }
+
+
+    }
+    cout<< setw(12) << "FirstName" << setw(12) <<"LastName" <<setw(10) <<"Province"<< setw(6) <<"CGPA"<<setw(16) <<"ResearchScore" <<endl;
+   for (int m=0; m<100; m++)  
+   {
+    cout << setw(12) << Order[m].getFirstName() << setw(12) << Order[m].getLastName();
+    cout << setw(10) << Order[m].getProvince()<< setw(6) << Order[m].getCGPA()<<setw(10)<< Order[m].getResearchScore() <<endl;
+   }
+   
+}
+void SortingInternationalStudent( InternationalStudent IStudent[], ToeflScore toefArr[])
 {
-    class InternationalStudent InternationalOrder = IStudent;
-    int size = sizeof(InternationalOrder)/size(InternationalOrder[0]);
+    class InternationalStudent InternationalOrder[100];
+    class ToeflScore ToefGrade[100];
+
+     for(int n=0; n< 100; n++)
+    {
+    ToefGrade[n] = toefArr[n];
+    InternationalOrder[n] = IStudent[n];
+    }
+    
+    int size = sizeof(InternationalOrder)/sizeof(InternationalOrder[0]);
     class InternationalStudent Temp;
+    class ToeflScore ToefTemp;
     int index;
     int SortNumber = size;
     int GradeReading;
@@ -72,16 +98,19 @@ void SortingInternationalStudent(const InternationalStudent &IStudent)
     int result3;
     for(int k = 0; k < size; k++)
     {
-        GradeListening = InternationalOrder[k].getToeflScore().getListening();
-        GradeSpeaking = InternationalOrder[k].getToeflScore().getSpeaking();
-        GradeReading = InternationalOrder[k].getToeflScore().getReading();
-        GradeWriting = InternationalOrder[k].getToeflScore().getWriting();
+        GradeListening = ToefGrade[k].getListening();
+        GradeSpeaking = ToefGrade[k].getSpeaking();
+        GradeReading = ToefGrade[k].getReading();
+        GradeWriting = ToefGrade[k].getWriting();
         GradeTotal = GradeListening + GradeSpeaking + GradeReading + GradeWriting;
         if(GradeTotal < 93 )
         {
            Temp = InternationalOrder[k];
            InternationalOrder[k] = InternationalOrder[SortNumber - 1];
            InternationalOrder[SortNumber - 1] = Temp;
+           ToefTemp = ToefGrade[k];
+           ToefGrade[k] = ToefGrade[SortNumber - 1];
+           ToefGrade[SortNumber - 1] = ToefTemp;
            SortNumber = SortNumber - 1;
            break;
         }
@@ -90,6 +119,9 @@ void SortingInternationalStudent(const InternationalStudent &IStudent)
            Temp = InternationalOrder[k];
            InternationalOrder[k] = InternationalOrder[SortNumber - 1];
            InternationalOrder[SortNumber - 1] = Temp;
+           ToefTemp = ToefGrade[k];
+           ToefGrade[k] = ToefGrade[SortNumber - 1];
+           ToefGrade[SortNumber - 1] = ToefTemp;
            SortNumber = SortNumber - 1;
            break; 
         }
@@ -98,6 +130,9 @@ void SortingInternationalStudent(const InternationalStudent &IStudent)
            Temp = InternationalOrder[k];
            InternationalOrder[k] = InternationalOrder[SortNumber - 1];
            InternationalOrder[SortNumber - 1] = Temp;
+           ToefTemp = ToefGrade[k];
+           ToefGrade[k] = ToefGrade[SortNumber - 1];
+           ToefGrade[SortNumber - 1] = ToefTemp;
            SortNumber = SortNumber - 1;
            break; 
         }
@@ -106,6 +141,9 @@ void SortingInternationalStudent(const InternationalStudent &IStudent)
            Temp = InternationalOrder[k];
            InternationalOrder[k] = InternationalOrder[SortNumber - 1];
            InternationalOrder[SortNumber - 1] = Temp;
+           ToefTemp = ToefGrade[k];
+           ToefGrade[k] = ToefGrade[SortNumber - 1];
+           ToefGrade[SortNumber - 1] = ToefTemp;
            SortNumber = SortNumber - 1;
            break; 
         }
@@ -114,54 +152,78 @@ void SortingInternationalStudent(const InternationalStudent &IStudent)
            Temp = InternationalOrder[k];
            InternationalOrder[k] = InternationalOrder[SortNumber - 1];
            InternationalOrder[SortNumber - 1] = Temp;
+           ToefTemp = ToefGrade[k];
+           ToefGrade[k] = ToefGrade[SortNumber - 1];
+           ToefGrade[SortNumber - 1] = ToefTemp;
            SortNumber = SortNumber - 1;
            break; 
         }
+
     }
+
     for(int i = 1; i < SortNumber - 1;i++ )
     {    
          index = i - 1;
          Temp =InternationalOrder[i-1];
-         for (int j=i+1;j < SortNumber j++)
+         ToefTemp = ToefGrade[i-1];
+         for (int j=i+1;j < SortNumber; j++)
          {
-            result = compareResarchScore(Temp, InternationalOrder[j]);
+            result = compareResearchScore(Temp, InternationalOrder[j]);
             if(result == 1)
             {
                Temp = InternationalOrder[j];
+               ToefTemp = ToefGrade[j];
                index =j;
             } 
             else if (result == 3)
             {
-                  results2 = compareCGPA(Temp,InternationalOrder[j]);
+                  result2 = compareCGPA(Temp,InternationalOrder[j]);
                   if(result2 == 1)
                     {
                         Temp = InternationalOrder[j];
+                        ToefTemp = ToefGrade[j];
                         index = j;
                     }
                   else if(result2 == 3)
                   {
-                        results3 = compareCountry(Temp,InternationalOrder[j]);
+                        result3 = compareCountry(Temp,InternationalOrder[j]);
                         if(result3 == 1 )
                         {
                             Temp = InternationalOrder[j];
+                            ToefTemp = ToefGrade[j];
                             index = j;
                         }
-                  }             
-            }
-              if(index != i - 1)
-              {
-                InternationalOrder[index] = Order[i-1];
-                InternationalOrder[i-1] =Temp;
-              }
-          }
 
+                  }
+
+             
+            }
+             
+          }
+        if(index != i - 1)
+              {
+                InternationalOrder[index] = InternationalOrder[i-1];
+                InternationalOrder[i-1] =Temp;
+                ToefGrade[index] = ToefGrade[i-1];
+                ToefGrade[i-1] = ToefTemp; 
+              }
     }
     class InternationalStudent PrintArray[SortNumber];
+    class ToeflScore PrintToefArray[SortNumber];
     for(int M = 0; M < SortNumber; M++)
     {
+        PrintToefArray[M] = ToefGrade[M];
         PrintArray[M] = InternationalOrder[M];
     }
-    cout << PrintArray << endl;
+    cout << setw(12) << "FirstName" << setw(12) <<"LastName" <<setw(10) <<"Country"<< setw(6) <<"CGPA"<<setw(16) <<"ResearchScore";
+    cout << setw(9) << "Reading"<< setw(11) << "Listening"<<setw(8) <<"Speaking"<< setw(9)<<"Writing" << endl;
+    for (int m=0; m<SortNumber; m++)  
+    {
+     cout << setw(12) << InternationalOrder[m].getFirstName()<<setw(12) << InternationalOrder[m].getLastName()<<setw(10)<< InternationalOrder[m].getCountry();
+     cout << setw(6) << InternationalOrder[m].getCGPA()<< setw(16) << InternationalOrder[m].getResearchScore()<< setw(9) << ToefGrade[m].getReading();
+     cout << setw(11) << ToefGrade[m].getListening() << setw(8) << ToefGrade[m].getSpeaking() << setw(9)<< ToefGrade[m].getWriting() << endl;
+    }
+    
     
 }
 
