@@ -168,8 +168,34 @@ while( getline(internationalFile, line) ) {
   domesticFile.close();
   internationalFile.close();
 
-  SortingDomesticStudent(domesArr);
-  SortingInternationalStudent(interArr, toeflArr);
+  for(int k = 1; k < 100; k++)
+  {
+     cout <<"  What do you want?" <<endl;
+     cout <<"  A for Sorting All Domestic Students By Signal Field" << endl;
+     cout <<"  B for Sorting All International Students By Signal Field " <<endl;
+     cout <<"  C for Sorting All Domestic Students By All Fields"<<endl;
+     cout <<"  D for Sorting All International Students By All Fields" <<endl;  
+     cin >> choose;
+     
+     if(choose > 'D' || choose < 'A')
+     {
+       cout << "Please write number between A and G" << endl;
+       exit(1);
+     }
+   else
+    {
+       switch(choose)
+      {
+       case 'C':
+               SortingDomesticStudent(domesArr);
+               break;
+      case 'D':
+              SortingInternationalStudent(interArr, toeflArr);
+              break;
+      }
+    }
+ 
+}
   return 0;
 }
 
