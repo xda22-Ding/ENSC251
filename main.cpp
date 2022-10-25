@@ -4,6 +4,7 @@
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
+#include <iomanip>
 #include "student.hpp"
 #include "stu_sort.hpp"
 using namespace std;
@@ -167,7 +168,8 @@ while( getline(internationalFile, line) ) {
   domesticFile.close();
   internationalFile.close();
 
- 
+  SortingDomesticStudent(domesArr);
+  SortingInternationalStudent(interArr, toeflArr);
   return 0;
 }
 
