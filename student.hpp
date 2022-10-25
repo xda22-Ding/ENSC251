@@ -6,10 +6,12 @@
 class Student 
 {
 public:
+	//The constructor of student class
 	Student(std::string fn, std::string ln, float cgpa, int score, int APPID);
+	//The default constructor of student class
 	Student();
     bool isValid() const;
-
+    //getter and setter of member variables
     std::string getFirstName() const;
     std::string getLastName() const;
     float getCGPA() const;
@@ -43,8 +45,11 @@ private:
 class ToeflScore
 {
 public:
+	//The constructor of ToeflScore Class
 	ToeflScore(int reading_para, int listening_para, int speaking_para, int writing_para);
+	//The default constructor of ToeflScore
 	ToeflScore();
+	//The Getter and Setter of ToeflScore
 	int getReading() const;
 	int getListening() const;
 	int getSpeaking() const;
@@ -73,6 +78,7 @@ private:
 class InternationalStudent : public Student
 {
 public:
+	//The constructor of Inheritted class InternationalStudent Class
 	InternationalStudent(std::string fn, std::string ln, float cgpa, int score, int APPID, ToeflScore toefl_score, std::string country);
 	InternationalStudent();
 	ToeflScore getToeflScore() const;
@@ -93,6 +99,7 @@ private:
 class DomesticStudent : public Student
 {
 public:
+	//The constructor of Inheritted class DomesticlStudent Class
 	DomesticStudent(std::string fn, std::string ln, float cgpa, int score, int APPID, std::string province);
 	DomesticStudent();
 	std::string getProvince() const;
