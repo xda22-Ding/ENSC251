@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include "student.hpp"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 void SortingDomesticStudent( DomesticStudent DStudent[]);
