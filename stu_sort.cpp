@@ -65,13 +65,72 @@ void SortingDomesticStudent( DomesticStudent DStudent[])
 
 
     }
-    cout<< setw(12) << "FirstName" << setw(12) <<"LastName" <<setw(10) <<"Province"<< setw(6) <<"CGPA"<<setw(16) <<"ResearchScore" <<endl;
+    cout<< setw(14) << "FirstName" << setw(14) <<"LastName" <<setw(10) <<"Province"<< setw(6) <<"CGPA"<<setw(16) <<"ResearchScore" <<endl;
    for (int m=0; m<100; m++)  
    {
-    cout << setw(12) << Order[m].getFirstName() << setw(12) << Order[m].getLastName();
+    cout << setw(14) << Order[m].getFirstName() << setw(14) << Order[m].getLastName();
     cout << setw(10) << Order[m].getProvince()<< setw(6) << Order[m].getCGPA()<<setw(10)<< Order[m].getResearchScore() <<endl;
    }
-   
+
+/* test requirement*/
+
+/*cout << " Violet Simmons researchscore is 70" << endl;
+cout << " Abigail Bailey researchscore is 71" <<endl;
+for (int mm=0; mm<100;mm++)
+{
+      if ((Order[mm].getFirstName() == "Violet") && (Order[mm].getLastName() == "Simmons" ))
+       { cout <<" Index of Simmons is " << mm <<endl;
+        break;
+
+       }
+}
+  for (int mm=0; mm<100;mm++)
+      {
+        if ((Order[mm].getFirstName() == "Abigail") && (Order[mm].getLastName() == "Bailey" ))
+        { cout <<" Index of Bailey is " << mm <<endl;
+           break;
+        }
+  
+      }
+cout << " Violet Simmons researchscore is 70, CGPA is 2.95, province is AB" << endl;
+cout << " Emily Rivera researchscore is 70, CGPA is 2.95, province is ON" <<endl;
+for (int mm=0; mm<100;mm++)
+{
+      if ((Order[mm].getFirstName() == "Violet") && (Order[mm].getLastName() == "Simmons" ))
+       { cout <<" Index of Simmons is " << mm <<endl;
+        break;
+
+       }
+}
+  for (int mm=0; mm<100;mm++)
+      {
+        if ((Order[mm].getFirstName() == "Emily") && (Order[mm].getLastName() == "Rivera" ))
+        { cout <<" Index of Rivera is " << mm <<endl;
+           break;
+        }
+  
+      }
+
+  cout << " Liam Edwards researchscore is 70, CGPA is 4.33, province is AB" << endl;
+  cout << " Emily Rivera researchscore is 70, CGPA is 2.95, province is ON" <<endl;
+for (int mm=0; mm<100;mm++)
+{
+      if ((Order[mm].getFirstName() == "Liam") && (Order[mm].getLastName() == "Edwards" ))
+       { 
+        cout <<" Index of Edwards is " << mm <<endl;
+        break;
+       }
+}
+  for (int mm=0; mm<100;mm++)
+      {
+        if ((Order[mm].getFirstName() == "Emily") && (Order[mm].getLastName() == "Rivera" ))
+        { 
+           cout <<" Index of Rivera is " << mm <<endl;
+           break;
+        }
+  
+      }*/
+
 }
 void SortingInternationalStudent( InternationalStudent IStudent[], ToeflScore toefArr[])
 {
@@ -85,8 +144,8 @@ void SortingInternationalStudent( InternationalStudent IStudent[], ToeflScore to
     }
     
     int size = sizeof(InternationalOrder)/sizeof(InternationalOrder[0]);
-    class InternationalStudent Temp;
-    class ToeflScore ToefTemp;
+    class InternationalStudent Temp, chooseStudent[100];
+    class ToeflScore ToefTemp, chooseToef[100];
     int index;
     int SortNumber = size;
     int GradeReading;
@@ -97,6 +156,8 @@ void SortingInternationalStudent( InternationalStudent IStudent[], ToeflScore to
     int result;
     int result2;
     int result3;
+    int number =0;
+    /*To choice  students base on toefl requirment*/
     for(int k = 0; k < size; k++)
     {
         GradeListening = ToefGrade[k].getListening();
@@ -104,65 +165,24 @@ void SortingInternationalStudent( InternationalStudent IStudent[], ToeflScore to
         GradeReading = ToefGrade[k].getReading();
         GradeWriting = ToefGrade[k].getWriting();
         GradeTotal = GradeListening + GradeSpeaking + GradeReading + GradeWriting;
-        if(GradeTotal < 93 )
+        if((GradeTotal >92) && (GradeListening > 19) && ( GradeSpeaking > 19) && ( GradeWriting > 19) && (GradeReading > 19))
         {
-           Temp = InternationalOrder[k];
-           InternationalOrder[k] = InternationalOrder[SortNumber - 1];
-           InternationalOrder[SortNumber - 1] = Temp;
-           ToefTemp = ToefGrade[k];
-           ToefGrade[k] = ToefGrade[SortNumber - 1];
-           ToefGrade[SortNumber - 1] = ToefTemp;
-           SortNumber = SortNumber - 1;
-           break;
+           chooseStudent[number] = InternationalOrder[k];
+           chooseToef[number] = ToefGrade[k];
+           number = number +1 ;
         }
-        else if(GradeListening < 20)
-        {
-           Temp = InternationalOrder[k];
-           InternationalOrder[k] = InternationalOrder[SortNumber - 1];
-           InternationalOrder[SortNumber - 1] = Temp;
-           ToefTemp = ToefGrade[k];
-           ToefGrade[k] = ToefGrade[SortNumber - 1];
-           ToefGrade[SortNumber - 1] = ToefTemp;
-           SortNumber = SortNumber - 1;
-           break; 
-        }
-        else if(GradeSpeaking < 20)
-        {
-           Temp = InternationalOrder[k];
-           InternationalOrder[k] = InternationalOrder[SortNumber - 1];
-           InternationalOrder[SortNumber - 1] = Temp;
-           ToefTemp = ToefGrade[k];
-           ToefGrade[k] = ToefGrade[SortNumber - 1];
-           ToefGrade[SortNumber - 1] = ToefTemp;
-           SortNumber = SortNumber - 1;
-           break; 
-        }
-        else if(GradeReading < 20)
-        {
-           Temp = InternationalOrder[k];
-           InternationalOrder[k] = InternationalOrder[SortNumber - 1];
-           InternationalOrder[SortNumber - 1] = Temp;
-           ToefTemp = ToefGrade[k];
-           ToefGrade[k] = ToefGrade[SortNumber - 1];
-           ToefGrade[SortNumber - 1] = ToefTemp;
-           SortNumber = SortNumber - 1;
-           break; 
-        }
-        else if(GradeWriting < 20)
-        {
-           Temp = InternationalOrder[k];
-           InternationalOrder[k] = InternationalOrder[SortNumber - 1];
-           InternationalOrder[SortNumber - 1] = Temp;
-           ToefTemp = ToefGrade[k];
-           ToefGrade[k] = ToefGrade[SortNumber - 1];
-           ToefGrade[SortNumber - 1] = ToefTemp;
-           SortNumber = SortNumber - 1;
-           break; 
-        }
-
+        
+        
     }
-
-    for(int i = 1; i < SortNumber - 1;i++ )
+    
+    SortNumber = number; 
+    /* Base on the requirement to sort students*/
+    for (int kk =0; kk < SortNumber-1; kk++)
+      {
+        InternationalOrder[kk]= chooseStudent[kk];
+        ToefGrade[kk]=chooseToef[kk];
+      }
+    for(int i = 1; i < SortNumber- 1;i++ )
     {    
          index = i - 1;
          Temp =InternationalOrder[i-1];
@@ -201,6 +221,7 @@ void SortingInternationalStudent( InternationalStudent IStudent[], ToeflScore to
             }
              
           }
+        /* Base on the relation of index to decide if or not exchange the contain the array*/
         if(index != i - 1)
               {
                 InternationalOrder[index] = InternationalOrder[i-1];
@@ -216,16 +237,117 @@ void SortingInternationalStudent( InternationalStudent IStudent[], ToeflScore to
         PrintToefArray[M] = ToefGrade[M];
         PrintArray[M] = InternationalOrder[M];
     }
-    cout << setw(12) << "FirstName" << setw(12) <<"LastName" <<setw(10) <<"Country"<< setw(6) <<"CGPA"<<setw(16) <<"ResearchScore";
+    cout << setw(16) << "FirstName" << setw(16) <<"LastName" <<setw(10) <<"Country"<< setw(6) <<"CGPA"<<setw(16) <<"ResearchScore";
     cout << setw(9) << "Reading"<< setw(11) << "Listening"<<setw(8) <<"Speaking"<< setw(9)<<"Writing" << endl;
     for (int m=0; m<SortNumber; m++)  
     {
-     cout << setw(12) << InternationalOrder[m].getFirstName()<<setw(12) << InternationalOrder[m].getLastName()<<setw(10)<< InternationalOrder[m].getCountry();
+     cout << setw(16) << InternationalOrder[m].getFirstName()<<setw(16) << InternationalOrder[m].getLastName()<<setw(10)<< InternationalOrder[m].getCountry();
      cout << setw(6) << InternationalOrder[m].getCGPA()<< setw(16) << InternationalOrder[m].getResearchScore()<< setw(9) << ToefGrade[m].getReading();
      cout << setw(11) << ToefGrade[m].getListening() << setw(8) << ToefGrade[m].getSpeaking() << setw(9)<< ToefGrade[m].getWriting() << endl;
     }
-    
-    
+
+ /* Test my code wheather or not satisfy requirment of project*/   
+ /* Below tow guys have different research score */
+ /*cout << " Mohammad Darbandi researchscore is 70" << endl; 
+cout << " Alireza Daghestani researchscore is 72" <<endl;
+for (int mm=0; mm < SortNumber - 1; mm++)
+{
+      if ((InternationalOrder[mm].getFirstName() == "Mohammad") && (InternationalOrder[mm].getLastName() == "Darbandi" ))
+       { 
+        cout <<" Index of Darbandi is " << mm <<endl;
+        break;
+
+       }
+}
+  for (int mm=0; mm<SortNumber - 1;mm++)
+      {
+        if ((InternationalOrder[mm].getFirstName() == "Alireza") && (InternationalOrder[mm].getLastName() == "Daghestani" ))
+        { 
+          cout <<" Index of Daghestani is " << mm <<endl;
+           break;
+        }
+  
+      }*/
+
+  /* Below tow guys have same research score and CGPA, but from different country*/
+/*cout << " Ankit Chaturvedi researchscore is 74, CGPA is 3.35,Country is Indian" << endl;
+cout << " Jiho Chung researchscore is 74,CGPA is 3.35, country is Korea " <<endl;
+for (int mm=0; mm < SortNumber - 1; mm++)
+{
+      if ((InternationalOrder[mm].getFirstName() == "Ankit") && (InternationalOrder[mm].getLastName() == "Chaturvedi" ))
+       { 
+        cout <<" Index of Chaturvedi is " << mm <<endl;
+        break;
+
+       }
+}
+  for (int mm=0; mm<SortNumber - 1;mm++)
+      {
+        if ((InternationalOrder[mm].getFirstName() == "Jiho") && (InternationalOrder[mm].getLastName() == "Chung" ))
+        { 
+          cout <<" Index of Chung is " << mm <<endl;
+           break;
+        }
+  
+      }*/
+
+  /* Below tow guys have same research score but have different CGPA*/
+/*cout << " Xin Liu researchscore is 79, CGPA is 3.4," << endl;
+cout << " Aditya Bhattathiri researchscore is 79,CGPA is 3.35,  " <<endl;
+for (int mm=0; mm < SortNumber - 1; mm++)
+{
+      if ((InternationalOrder[mm].getFirstName() == "Xin") && (InternationalOrder[mm].getLastName() == "Liu" ))
+       { 
+        cout <<" Index of Liu is " << mm <<endl;
+        break;
+
+       }
+}
+  for (int mm=0; mm<SortNumber - 1;mm++)
+      {
+        if ((InternationalOrder[mm].getFirstName() == "Aditya") && (InternationalOrder[mm].getLastName() == "Bhattathiri" ))
+        { 
+          cout <<" Index of Bhattathiri is " << mm <<endl;
+           break;
+        }
+  
+      }*/
+/*Test condition of droping total toefl score*/
+/*cout << " Peter Choi: Total Toef Score is 92 " <<endl;
+for (int mm=0; mm < SortNumber - 1; mm++)
+{
+      if ((InternationalOrder[mm].getFirstName() == "Peter") && (InternationalOrder[mm].getLastName() == "Choi" ))
+       { 
+        cout <<" Index of Choi is " << mm <<endl;
+        break;
+
+       }
+       else
+       {
+        cout << " Peter Choi is droped!"<< endl;
+        break;
+       }
+}*/
+
+/*Test drop condition  with speaking*/
+/*cout << " Quan Zhang: Total Toef Score is 94 however the speaking is 19" <<endl;
+for (int mm=0; mm < SortNumber - 1; mm++)
+{
+      if ((InternationalOrder[mm].getFirstName() == "Quan") && (InternationalOrder[mm].getLastName() == "Zhang" ))
+       { 
+        cout <<" Index of Zhang  is " << mm <<endl;
+        break;
+
+       }
+       else
+       {
+        cout << " Quan Zhang is droped!"<< endl;
+        break;
+       }
+}*/
+
+
+
 }
 
 
