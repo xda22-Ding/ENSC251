@@ -248,7 +248,7 @@ void merge_CGPA_In(InternationalStudent * A, const int& startIndex, const int& m
         if (A[i].getCGPA() > A[j].getCGPA())
             temp[k++] = A[i++];
         else
-            temp[k++] = A[i++];
+            temp[k++] = A[j++];
     }
     while (i <= middleIndex)
         temp[k++] = A[i++];
@@ -286,7 +286,7 @@ void merge_RScore_In(InternationalStudent * A, const int& startIndex, const int&
         if (A[i].getResearchScore() > A[j].getResearchScore())
             temp[k++] = A[i++];
         else
-            temp[k++] = A[i++];
+            temp[k++] = A[j++];
     }
     while (i <= middleIndex)
         temp[k++] = A[i++];
@@ -324,7 +324,7 @@ void merge_FN_In(InternationalStudent * A, const int& startIndex, const int& mid
         if (A[i].getFirstName() < A[j].getFirstName())
             temp[k++] = A[i++];
         else
-            temp[k++] = A[i++];
+            temp[k++] = A[j++];
     }
     while (i <= middleIndex)
         temp[k++] = A[i++];
@@ -362,7 +362,7 @@ void merge_LN_In(InternationalStudent * A, const int& startIndex, const int& mid
         if (A[i].getLastName() < A[j].getLastName())
             temp[k++] = A[i++];
         else
-            temp[k++] = A[i++];
+            temp[k++] = A[j++];
     }
     while (i <= middleIndex)
         temp[k++] = A[i++];
@@ -400,7 +400,7 @@ void merge_CGPA_Do(DomesticStudent * A, const int& startIndex, const int& middle
         if (A[i].getCGPA() > A[j].getCGPA())
             temp[k++] = A[i++];
         else
-            temp[k++] = A[i++];
+            temp[k++] = A[j++];
     }
     while (i <= middleIndex)
         temp[k++] = A[i++];
@@ -438,7 +438,7 @@ void merge_RScore_Do(DomesticStudent * A, const int& startIndex, const int& midd
         if (A[i].getResearchScore() > A[j].getResearchScore())
             temp[k++] = A[i++];
         else
-            temp[k++] = A[i++];
+            temp[k++] = A[j++];
     }
     while (i <= middleIndex)
         temp[k++] = A[i++];
@@ -476,7 +476,7 @@ void merge_FN_Do(DomesticStudent * A, const int& startIndex, const int& middleIn
         if (A[i].getFirstName() < A[j].getFirstName())
             temp[k++] = A[i++];
         else
-            temp[k++] = A[i++];
+            temp[k++] = A[j++];
     }
     while (i <= middleIndex)
         temp[k++] = A[i++];
@@ -514,7 +514,7 @@ void merge_LN_Do(DomesticStudent * A, const int& startIndex, const int& middleIn
         if (A[i].getLastName() < A[j].getLastName())
             temp[k++] = A[i++];
         else
-            temp[k++] = A[i++];
+            temp[k++] = A[j++];
     }
     while (i <= middleIndex)
         temp[k++] = A[i++];
@@ -537,3 +537,88 @@ void mergeSort_LN_Do (DomesticStudent *A, const int& startIndex, const int& last
     }
 }
 
+InternationalStudent * Field_Sort_IN (InternationalStudent * A, const int size)
+{
+    int startIndex = 0;
+    int lastIndex = size - 1;
+    InternationalStudent * temp = new InternationalStudent[size];
+    for (int i =0; i < size; i++)
+        temp[i] = A[i];
+    
+    char choice;
+        cout << "Right now you are in International student field sort." << endl;
+        cout << "Which field would you like to sort?" << endl;
+        cout << "'C' for CGPA, 'R' for research socre, 'F' for first name, 'L' for last name" << endl;
+        cout << "If you want to exit press 'E'." << endl;
+        cin >> choice;
+        
+        if (choice == 'C')
+        {
+            mergeSort_CGPA_In(temp, startIndex, lastIndex);
+            return temp;
+        }
+        else if (choice == 'R')
+        {
+            mergeSort_RScore_In(temp, startIndex, lastIndex);
+            return temp;
+        }
+        else if (choice == 'F')
+        {
+            mergeSort_FN_In(temp, startIndex, lastIndex);
+            return temp;
+        }
+        else if (choice == 'L')
+        {
+            mergeSort_LN_In(temp, startIndex, lastIndex);
+            return temp;
+        }
+        else
+        {
+            cout << "Invalid Input" << endl;
+            return 0;
+        }
+
+}
+
+DomesticStudent * Field_Sort_Do (DomesticStudent * A, const int size)
+{
+    int startIndex = 0;
+    int lastIndex = size - 1;
+    DomesticStudent * temp = new DomesticStudent[size];
+    for (int i =0; i < size; i++)
+        temp[i] = A[i];
+    
+    char choice;
+        cout << "Right now you are in International student field sort." << endl;
+        cout << "Which field would you like to sort?" << endl;
+        cout << "'C' for CGPA, 'R' for research socre, 'F' for first name, 'L' for last name" << endl;
+        cout << "If you want to exit press 'E'." << endl;
+        cin >> choice;
+        
+        if (choice == 'C')
+        {
+            mergeSort_CGPA_Do(temp, startIndex, lastIndex);
+            return temp;
+        }
+        else if (choice == 'R')
+        {
+            mergeSort_RScore_Do(temp, startIndex, lastIndex);
+            return temp;
+        }
+        else if (choice == 'F')
+        {
+            mergeSort_FN_Do(temp, startIndex, lastIndex);
+            return temp;
+        }
+        else if (choice == 'L')
+        {
+            mergeSort_LN_Do(temp, startIndex, lastIndex);
+            return temp;
+        }
+        else
+        {
+            cout << "Invalid Input" << endl;
+            return 0;
+        }
+
+}

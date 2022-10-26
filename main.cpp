@@ -215,6 +215,39 @@ while( getline(internationalFile, line) ) {
     }
  
 }
+    
+    /*test code for field sort*/
+    char choice;
+    int int_size = int_count;
+    int do_size = stu_count;
+    InternationalStudent *temp_int = new InternationalStudent[int_size];
+    DomesticStudent *temp_Do = new DomesticStudent[do_size];
+    
+    do
+    {
+        cout << "Right now you are in the field sort." << endl;
+        cout << "Press 'E' if you want to exit." << endl;
+        cout << "Which type of students would you like to sort?" << endl;
+        cout << "Press 'I' for international studnet or press 'D' for Domestic student." << endl;
+        cin >> choice;
+        if (choice =='I')
+        {
+            temp_int = Field_Sort_IN(interArr, int_size);
+            for (int i = 0; i < 100; i++)
+            {
+                cout << temp_int[i]<<endl;
+            }
+        }
+        else if (choice =='D')
+        {
+            temp_Do = Field_Sort_Do(domesArr, do_size);
+            for (int i = 0; i < 100; i++)
+            {
+                cout << temp_Do[i]<<endl;
+            }
+        }
+    }while (choice != 'E');
+    
   return 0;
 }
 

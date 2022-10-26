@@ -37,6 +37,7 @@ void mergeSort_FN_Do (DomesticStudent *A, const int& startIndex, const int& last
 /*                  Last name sort for Domestic student                */
 void merge_LN_Do(DomesticStudent * A, const int& startIndex, const int& middleIndex, const int& lastIndex);
 void mergeSort_LN_Do (DomesticStudent *A, const int& startIndex, const int& lastIndex);
-
+InternationalStudent * Field_Sort_IN (InternationalStudent * A, const int size);
+DomesticStudent * Field_Sort_Do (DomesticStudent * A, const int size);
 
 #endif /* stu_sort_hpp */
