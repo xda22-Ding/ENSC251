@@ -50,15 +50,24 @@ int main(int argc, char*argv[])
 	int scoRes3 = compareResearchScore(stu7, stu8);
 	cout << scoRes3 << endl;
 	
-	
+	cout << "First name compare function test: "<< endl;
+	cout << "First name regular case: "<<"Student1 has first name  "<<stu1.getFirstName()<<"; Student2 has first name "<<stu2.getFirstName()<<endl;
+	int firRes1 = compareFirstName(stu1, stu2);
+	cout << firRes1 << endl;
+
+	cout << "First name corner case: "<<"Student1 has first name  "<<stu3.getFirstName()<<"; Student2 has first name "<<stu4.getFirstName()<<endl;
+	int firRes2 = compareFirstName(stu3, stu4);
+	cout << firRes2 << endl;
+
+
 	cout << "Last name compare function test: "<< endl;
 	cout << "Last name regular case: "<<"Student1 has Last name  "<<stu1.getLastName()<<"; Student2 has Last name "<<stu2.getLastName()<<endl;
-	int firRes1 = compareLastName(stu1, stu2);
-	cout << firRes1 << endl;
+	int lasRes1 = compareLastName(stu1, stu2);
+	cout << lasRes1 << endl;
 	
 	cout << "Last name corner case: "<<"Student1 has last name "<<stu3.getLastName()<<"; Student2 has last name "<<stu4.getLastName()<<endl;
-	int firRes2 = compareLastName(stu3, stu4);
-	cout << firRes2 << endl;
+	int lasRes2 = compareLastName(stu3, stu4);
+	cout << lasRes2 << endl;
 	
 	
 	return 0;
