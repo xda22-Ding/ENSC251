@@ -11,7 +11,7 @@ Student::Student(string fn, string ln, float cgpa, int score, int APPID){
     setCGPA(cgpa);
     setResearchScore(score);
     setAppID(APPID);
-
+    isValid();
 }
 
 //The default constructor of student class
