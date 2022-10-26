@@ -19,7 +19,7 @@ Student::Student(){};
 
 //Check if the fields of Student object meet certain requirements.
 bool Student::isValid() const{
-	if(CGPA < 0 || CGPA > 4.3){
+	if(CGPA < 0 || CGPA > 4.33){
 		cout << "the CGPA is invalid. " << endl;
 		return false;
 	}
